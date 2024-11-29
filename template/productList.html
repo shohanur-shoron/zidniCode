@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
+    <title>View Students</title>
+</head>
+<body>
+
+    <div class="viewStudent">
+        <div class="buttons">
+            <a href="{% url 'create_product' %}" class="btns">Add a Product</a>
+        <a href="{% url 'product_list' %}" class="btns active">View Products</a>
+        </div>
+        <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                  <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.price }}</td>
+                    <td><a href="{% url 'update_product' product.id %}" class="update">Update</a><a href="{% url 'delete_product' product.id %}" class="delete">Delete</a></td>
+                  </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+
+
+
+
+
+</body>
+</html>
